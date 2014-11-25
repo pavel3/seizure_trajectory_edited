@@ -1,7 +1,7 @@
 function [tau embeded embeded_t reduced_block D D_t surrogate_block D_surrogate] = trajectory()
 clear
 clc
-FILE_NAME	= 'Data/segmented data/CT_control_1_1_100Hz';
+FILE_NAME	= 'Data/segmented data/KA_100Hz';
 load(FILE_NAME, 'record_block', 'fs');
 
 STEP_SIZE		= 10;

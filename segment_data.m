@@ -53,7 +53,7 @@ function segment_data
 
 %% Control 100Hz
 clear
-load('Data/original data/control.mat');
+load('Data/original data/kainic acid.mat');
 
 fs_raw					= 2000;
 fs						= fs_raw/20;
@@ -67,6 +67,6 @@ for c1 = 1:n_channels
 end
 
 record_block = record_block';
-save('Data/CT_1_1_100Hz.mat', 'record_block', 'fs');
+save('Data/KA_100Hz.mat', 'record_block', 'fs');
 end
 
