@@ -1,7 +1,7 @@
-function trajectory
+function [tau embeded embeded_t reduced_block D D_t surrogate_block D_surrogate] = trajectory()
 clear
 clc
-FILE_NAME	= 'Data/segmented data/CT_1_1_100Hz';
+FILE_NAME	= 'Data/segmented data/CT_control_1_1_100Hz';
 load(FILE_NAME, 'record_block', 'fs');
 
 STEP_SIZE		= 10;
@@ -31,26 +31,26 @@ end
 
 end
 
-function C = correlation_integral(window, w, r0)
-
-K		= size(window,1);
-count	= 0;
-dist	= nan(K^2,1);
-for t = 1:K
-	for s = t+1+w:K
-		count		= count + 1;
-		dist(count) = norm(window(t,:) - window(s,:), inf);		
-	end
-end
-
-dist = dist(1:count);
-if nargin == 2
-	C = median(dist);
-else
-	C = mean(dist < r0);
-end
-
-end
+% function C = correlation_integral(window, w, r0)
+% 
+% K		= size(window,1);
+% count	= 0;
+% dist	= nan(K^2,1);
+% for t = 1:K
+% 	for s = t+1+w:K
+% 		count		= count + 1;
+% 		dist(count) = norm(window(t,:) - window(s,:), inf);		
+% 	end
+% end
+% 
+% dist = dist(1:count);
+% if nargin == 2
+% 	C = median(dist);
+% else
+% 	C = mean(dist < r0);
+% end
+% 
+% end
 
 function [D t_D] = correlation_density(phase_space, step_size, window_size, fs)
 
