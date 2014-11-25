@@ -12,15 +12,19 @@ for j1 = 1:rows
     end
 end
 
-upper_bound = max(dist(:));
+temp_val = max(dist(:));
+temp_round = abs(floor(log10(temp_val)));
+upper_bound = round(temp_val*10^(temp_round))/10^temp_round;
 
-C = 0:upper_bound/1000:upper_bound;
-z = C;
+z = 0:upper_bound/1000:upper_bound;
+C = zeros(1,length(z));
 
 for j1 = 1:rows
     for j2 = 1:rows
-        C = heaviside(C - (r0 - norm(time_series(j1) - time_series(j2))));
+        C = C + heaviside(z - (dist(j1,j2)));
     end
 end
+
+C = C./rows^2;
 end
 
