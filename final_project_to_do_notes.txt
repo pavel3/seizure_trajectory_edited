@@ -2,3 +2,4 @@ run data at 2k hz
 find best values of r
 compare channels 1-8 to 9-16
 do control, kainic and tetanus
+compare performance of SRP to autocorrelation function (as per the paper)
